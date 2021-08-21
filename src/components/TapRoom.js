@@ -1,4 +1,6 @@
 import React from 'react';
+import NewBeerForm from './NewBeerForm';
+import BeerList from './BeerList';
 
 class TapRoom extends React.Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class TapRoom extends React.Component {
 
   handleClick = () => {
     this.setState(prevState => ({
-      formVisibleOnPage: !this.prevState.formVisibleOnPage
+      formVisibleOnPage: !prevState.formVisibleOnPage
     }));
   }
 
@@ -21,8 +23,10 @@ class TapRoom extends React.Component {
 
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewBeerForm />;
+      buttonText = "Return to Beer List";
     } else {
       currentlyVisibleState = <BeerList />;
+      buttonText = "Enter New Beer";
     }
 
     return (

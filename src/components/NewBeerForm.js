@@ -5,6 +5,8 @@ import ReusableForm from './ReusableForm';
 
 function NewBeerForm(props) {
   return(
-    <p></p>
+    <ReusableForm />
   )
 }
+
+export default NewBeerForm;
