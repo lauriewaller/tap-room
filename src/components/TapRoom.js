@@ -17,12 +17,20 @@ class TapRoom extends React.Component {
     }));
   }
 
+  handleAddingNewBeerToList = (newBeer) => {
+    const newBeerList = this.state.masterBeerList.concat(newBeer);
+    this.setState({
+      masterBeerList: newBeerList,
+      formVisibleOnPage: false
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewBeerForm />;
+      currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList}/>;
       buttonText = "Return to Beer List";
     } else {
       currentlyVisibleState = <BeerList />;
