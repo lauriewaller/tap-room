@@ -2,6 +2,7 @@ import React from 'react';
 import NewBeerForm from './NewBeerForm';
 import BeerList from './BeerList';
 import EditBeerForm from './EditBeerForm';
+import BeerDetail from './BeerDetail';
 
 class TapRoom extends React.Component {
   constructor(props) {
