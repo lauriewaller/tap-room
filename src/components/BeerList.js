@@ -3,19 +3,19 @@ import Beer from './Beer';
 import PropTypes from 'prop-types';
 
 function BeerList(props) {
-  return(
+  return (
     <>
-    <hr/>
-    {props.beerList.map((beer) => 
-      <Beer
-      whenBeerClicked = { props.onBeerSelection } 
-      name={beer.name}
-      price={beer.price}
-      brand={beer.brand}
-      alcoholContent={beer.alcoholContent}
-      id={beer.id}
-      key={beer.id} />
-    )}
+      <hr />
+      {props.beerList.map((beer) =>
+        <Beer
+          whenBeerClicked={props.onBeerSelection}
+          name={beer.name}
+          price={beer.price}
+          brand={beer.brand}
+          alcoholContent={beer.alcoholContent}
+          id={beer.id}
+          key={beer.id} />
+      )}
     </>
   );
 }

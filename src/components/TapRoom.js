@@ -80,7 +80,7 @@ class TapRoom extends React.Component {
       currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList} />;
       buttonText = "Return to Beer List";
     } else {
-      currentlyVisibleState = <BeerList beerList={this.state.masterBeerList} />;
+      currentlyVisibleState = <BeerList beerList={this.state.masterBeerList} onBeerSelection={this.handleChangingSelectedBeer} />;
       buttonText = "Enter New Beer";
     }
 
