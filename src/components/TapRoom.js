@@ -7,14 +7,24 @@ class TapRoom extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      masterBeerList: []
+      masterBeerList: [],
+      selectedBeer: null,
+      editing: false
     };
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedBeer != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedBeer: null,
+        editing: false
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
   }
 
   handleAddingNewBeerToList = (newBeer) => {
@@ -25,22 +35,53 @@ class TapRoom extends React.Component {
     });
   }
 
+  handleChangingSelectedBeer = (id) => {
+    const selectedBeer = this.state.masterBeerList.filter(beer => beer.id === id)[0];
+    this.setState({ selectedBeer: selectedBeer });
+  }
+
+  handleDeletingBeer = (id) => {
+    const newMasterBeerList = this.state.masterBeerList.filter(beer => beer.id !== id);
+    this.setState({
+      masterBeerList: newMasterBeerList,
+      selectedBeer: null
+    });
+  }
+
+  handleEditClick = () => {
+    console.log("handleEditClick reached!");
+    this.setState({editing:true});
+  }
+
+  handleEditingBeerInList = (beerToEdit) => {
+    const editedMasterBeerList = this.state.masterBeerList
+      .filter(beer => beer.id !== this.state.selectedBeer.id)
+      .concat(beerToEdit);
+    this.setState({
+        masterBeerList: editedMasterBeerList,
+        editing: false,
+        selectedBeer: null
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList}/>;
+      currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList} />;
       buttonText = "Return to Beer List";
-    } else {
-      currentlyVisibleState = <BeerList />;
+    } else if (this.state.selectedBeer)
+    
+    {
+      currentlyVisibleState = <BeerList beerList={this.state.masterBeerList} />;
       buttonText = "Enter New Beer";
     }
 
     return (
       <>
-      {currentlyVisibleState}
-      <button onClick={this.handleClick}>{buttonText}</button>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
       </>
     );
   }
