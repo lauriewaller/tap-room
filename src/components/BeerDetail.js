@@ -10,7 +10,8 @@ function BeerDetail(props){
       <h3>{beer.name}</h3>
       <p>{beer.brand}</p>
       <p>{beer.price}</p>
-      <p>{beer.alcoholContent}</p>
+      <p>{beer.alcoholContent}</p> 
+      <div style={{display: "block"}}><p>Number of pints: {beer.pints}</p> <button>Sell a pint</button></div>
       <button onClick={ props.onClickingEdit }>Edit Beer Data</button>
       <button onClick={()=> onClickingDelete(beer.id) }>Delete Beer</button> 
       <hr/>

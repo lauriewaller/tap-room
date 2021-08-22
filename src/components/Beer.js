@@ -21,7 +21,7 @@ Beer.propTypes = {
   brand: PropTypes.string,
   price: PropTypes.string,
   alcoholContent: PropTypes.string,
-  pints: PropTypes.string,
+  pints: PropTypes.number,
   id: PropTypes.string,
   whenBeerClicked: PropTypes.func
 }; 
