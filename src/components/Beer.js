@@ -9,6 +9,7 @@ function Beer(props){
       <p>{props.brand}</p>
       <p>{props.price}</p>
       <p>{props.alcoholContent}</p>
+      <p>{props.pints}</p>
       <hr/>
       </div>
     </>
@@ -20,6 +21,7 @@ Beer.propTypes = {
   brand: PropTypes.string,
   price: PropTypes.string,
   alcoholContent: PropTypes.string,
+  pints: PropTypes.string,
   id: PropTypes.string,
   whenBeerClicked: PropTypes.func
 }; 

@@ -13,6 +13,7 @@ function BeerList(props) {
           price={beer.price}
           brand={beer.brand}
           alcoholContent={beer.alcoholContent}
+          pints={beer.pints}
           id={beer.id}
           key={beer.id} />
       )}
