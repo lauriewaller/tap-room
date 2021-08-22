@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function BeerList(props) {
   return (
     <>
-      <hr />
+      <hr/>
       {props.beerList.map((beer) =>
         <Beer
           whenBeerClicked={props.onBeerSelection}
