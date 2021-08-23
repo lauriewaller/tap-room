@@ -84,7 +84,7 @@ class TapRoom extends React.Component {
     let buttonText = null;
 
     if (this.state.editing) {
-      currentlyVisibleState = <EditBeerForm Beer={this.state.selectedBeer} onEditBeer={this.handleEditingBeerInList} />
+      currentlyVisibleState = <EditBeerForm beer={this.state.selectedBeer} onEditBeer={this.handleEditingBeerInList} />
       buttonText = "Return to Beer List";
     } else if (this.state.selectedBeer != null) {
       currentlyVisibleState = <BeerDetail beer={this.state.selectedBeer} onClickingDelete={this.handleDeletingBeer} onClickingEdit={this.handleEditClick} onClickingSoldBeer={this.handleSoldBeer} />
