@@ -67,39 +67,43 @@ class TapRoom extends React.Component {
   }
 
   handleSoldBeer = (id) => {
-    const selectedBeer = this.state.masterBeerList.filter(beer => beer.id === id);
-    const pints = selectedBeer.pints;
-    const newNumber = pints - 1;
-    this.setState({
-      pints: newNumber
-    });
-}
-
-render() {
-  let currentlyVisibleState = null;
-  let buttonText = null;
-
-  if (this.state.editing) {
-    currentlyVisibleState = <EditBeerForm Beer={this.state.selectedBeer} onEditBeer={this.handleEditingBeerInList} />
-    buttonText = "Return to Beer List";
-  } else if (this.state.selectedBeer != null) {
-    currentlyVisibleState = <BeerDetail beer={this.state.selectedBeer} onClickingDelete={this.handleDeletingBeer} onClickingEdit={this.handleEditClick} onClickingSoldBeer={this.handleSoldBeer} />
-    buttonText = "Return to Beer List";
-  } else if (this.state.formVisibleOnPage) {
-    currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList} />;
-    buttonText = "Return to Beer List";
-  } else {
-    currentlyVisibleState = <BeerList beerList={this.state.masterBeerList} onBeerSelection={this.handleChangingSelectedBeer} />;
-    buttonText = "Enter New Beer";
+    let selectedBeer = this.state.masterBeerList.filter(beer => beer.id === id);
+    if (selectedBeer[0].pints > 0) {
+      selectedBeer[0].pints--;
+      console.log(selectedBeer)
+      const updatedPintBeer = this.state.masterBeerList.filter(beer => beer.id !== id).concat(selectedBeer);
+      console.log("hi")
+      this.setState({
+        masterBeerList: updatedPintBeer
+      });
+    }
   }
 
-  return (
-    <>
-      {currentlyVisibleState}
-      <button onClick={this.handleClick}>{buttonText}</button>
-    </>
-  );
-}
+  render() {
+    let currentlyVisibleState = null;
+    let buttonText = null;
+
+    if (this.state.editing) {
+      currentlyVisibleState = <EditBeerForm Beer={this.state.selectedBeer} onEditBeer={this.handleEditingBeerInList} />
+      buttonText = "Return to Beer List";
+    } else if (this.state.selectedBeer != null) {
+      currentlyVisibleState = <BeerDetail beer={this.state.selectedBeer} onClickingDelete={this.handleDeletingBeer} onClickingEdit={this.handleEditClick} onClickingSoldBeer={this.handleSoldBeer} />
+      buttonText = "Return to Beer List";
+    } else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewBeerForm onNewBeerCreation={this.handleAddingNewBeerToList} />;
+      buttonText = "Return to Beer List";
+    } else {
+      currentlyVisibleState = <BeerList beerList={this.state.masterBeerList} onBeerSelection={this.handleChangingSelectedBeer} />;
+      buttonText = "Enter New Beer";
+    }
+
+    return (
+      <>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </>
+    );
+  }
 }
 
 export default TapRoom;
