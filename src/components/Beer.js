@@ -5,11 +5,11 @@ function Beer(props){
   return (
     <>
       <div onClick = {() => props.whenBeerClicked(props.id)}>
-      <h3>{props.name}</h3>
-      <p>{props.brand}</p>
-      <p>{props.price}</p>
-      <p>{props.alcoholContent}</p>
-      <p>{props.pints}</p>
+      <h3>Name: {props.name}</h3>
+      <p>Brand: {props.brand}</p>
+      <p>Price: ${props.price}</p>
+      <p>Alcohol Content: {props.alcoholContent}</p>
+      <p>Pints Remaining: {props.pints}</p>
       <hr/>
       </div>
     </>

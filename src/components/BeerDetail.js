@@ -7,12 +7,12 @@ function BeerDetail(props){
   return (
     <>
       <h1>Beer Details</h1>
-      <h3>{beer.name}</h3>
-      <p>{beer.brand}</p>
-      <p>{beer.price}</p>
-      <p>{beer.alcoholContent}</p> 
+      <h3>Name: {beer.name}</h3>
+      <p>Brand: {beer.brand}</p>
+      <p>Price: ${beer.price}</p>
+      <p>Alcohol Content: {beer.alcoholContent}</p> 
       {/* <div style={{display: "block"}}> */}
-      <p>Number of pints: {beer.pints}</p> 
+      <p>Pints Remaining: {beer.pints}</p> 
       <button onClick={()=> onClickingSoldBeer(beer.id) }>Sell a pint</button>
       <hr/>
       <button onClick={ props.onClickingEdit }>Edit Beer Data</button>
