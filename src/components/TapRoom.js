@@ -51,7 +51,6 @@ class TapRoom extends React.Component {
   }
 
   handleEditClick = () => {
-    console.log("handleEditClick reached!");
     this.setState({ editing: true });
   }
 
@@ -70,9 +69,7 @@ class TapRoom extends React.Component {
     let selectedBeer = this.state.masterBeerList.filter(beer => beer.id === id);
     if (selectedBeer[0].pints > 0) {
       selectedBeer[0].pints--;
-      console.log(selectedBeer)
       const updatedPintBeer = this.state.masterBeerList.filter(beer => beer.id !== id).concat(selectedBeer);
-      console.log("hi")
       this.setState({
         masterBeerList: updatedPintBeer
       });
