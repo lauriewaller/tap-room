@@ -27,6 +27,9 @@ This application provides full CRUD functionality for a taproom user to add, edi
   navigate to tap-room in Terminal, type `code .`, and press Enter.
   5. In the tap-room directory, type `npm install` and then `npm start` to run the program in a local browser. 
 
+## Component Diagram
+![tap-room](https://user-images.githubusercontent.com/57472714/130396105-27c9cae5-06ce-47f6-9bed-9caf9693a221.png)
+
 ## Known Bugs
 
 * No known errors
