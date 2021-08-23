@@ -14,7 +14,8 @@ function EditBeerForm(props){
     <>
       <ReusableForm 
         formSubmissionHandler={handleEditBeerFormSubmission}
-        buttonText="Edit Beer" />
+        buttonText="Edit Beer" 
+        beer={beer} />
     </>
   );
 }
